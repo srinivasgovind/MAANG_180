@@ -3,5 +3,5 @@
 ## What I Learned
 - **Topic: Strings Questions**
 - **Details: Worked on Longest prefix String and Longest Palindromic Substring**
-- **Timer Hrs: 2**
+- **Timer Hrs: 4**
 - **Streak Break Reason: NA**
