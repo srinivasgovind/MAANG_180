@@ -1,7 +1,7 @@
 # Day 2: 2024-10-25
 
 ## What I Learned
-- **Topic:**
-- **Details:**
-- **Timer Hrs:**
+- **Topic: Hashing 1 & Skimming to Problem Solving Session**
+- **Details: HashMap and HashSet Lecture recap**
+- **Timer Hrs: 3**
 - **Streak Break Reason: NA**
