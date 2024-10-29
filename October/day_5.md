@@ -1,7 +1,7 @@
 # Day 5: 2024-10-28
 
 ## What I Learned
-- **Topic:**
-- **Details:**
-- **Timer Hrs:**
+- **Topic: Hashing 2**
+- **Details: Lecture + Few Problems solved**
+- **Timer Hrs: 3.5**
 - **Streak Break Reason: NA**
