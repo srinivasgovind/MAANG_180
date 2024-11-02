@@ -1,7 +1,7 @@
 # Day 9: 2024-11-01
 
 ## What I Learned
-- **Topic:**
-- **Details:**
-- **Timer Hrs:**
+- **Topic: Recursion**
+- **Details: Recursion -2 Lecture and Problems**
+- **Timer Hrs: 2**
 - **Streak Break Reason: NA**
