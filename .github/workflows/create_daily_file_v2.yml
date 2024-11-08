@@ -15,12 +15,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create daily log file
+      - name: Fetch latest changes
+        run: git pull origin main
+
+      - name: Set timezone and calculate day number
         run: |
           # Set timezone to CST
           export TZ='America/Chicago'
           
-          # Set the start date (July 15th as day 6)
+          # Set the start date (Oct 24th as day 1)
           START_DATE="2024-10-24"
           
           # Calculate the day number
@@ -36,15 +39,27 @@ jobs:
           # Create folder if it doesn't exist
           mkdir -p $FOLDER
           
-          # Copy template and replace placeholders
-          sed "s/Day X/Day ${DAY_NUMBER}/g; s/\[Date\]/${FORMATTED_DATE}/g" template.md > "$FOLDER/$FILENAME"
+          # Create or update the daily log file
+          if [ ! -f "$FOLDER/$FILENAME" ]; then
+            # Copy template and replace placeholders
+            sed "s/Day X/Day ${DAY_NUMBER}/g; s/\[Date\]/${FORMATTED_DATE}/g" template.md > "$FOLDER/$FILENAME"
+            echo "Created new file: $FOLDER/$FILENAME"
+          else
+            echo "File already exists: $FOLDER/$FILENAME"
+            # Optionally touch the file to modify the timestamp
+            touch "$FOLDER/$FILENAME"
+          fi
           
-          echo "Created file $FOLDER/$FILENAME for Day ${DAY_NUMBER}"
+          # List files for debugging
+          ls -l $FOLDER
 
       - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add .
-          git commit -m "Automated creation of daily log file for Day ${DAY_NUMBER}"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Automated creation of daily log file for Day ${DAY_NUMBER}"
+            git push
+          else
+            echo "No changes to commit"
