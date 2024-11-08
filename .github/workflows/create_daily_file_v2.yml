@@ -60,6 +60,11 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git add .
             git commit -m "Automated creation of daily log file for Day ${DAY_NUMBER}"
+
+            # Pull latest changes from remote to avoid push rejection
+            git pull --rebase origin main
+
+            # Push changes
             git push
           else
             echo "No changes to commit"
