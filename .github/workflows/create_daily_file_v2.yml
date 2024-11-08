@@ -55,6 +55,7 @@ jobs:
 
       - name: Commit changes
         run: |
+          echo "Starting commit process..."
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           if [ -n "$(git status --porcelain)" ]; then
@@ -68,3 +69,5 @@ jobs:
             git push
           else
             echo "No changes to commit"
+          fi
+          echo "Commit process completed."
